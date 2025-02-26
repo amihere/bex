@@ -1,8 +1,11 @@
 package com.arachnid.bex;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 @SpringBootApplication
 public class BexApplication {
   public static void main(String[] args) {
-    SpringApplication.run(BexApplication.class);
+    SpringApplication.run(BexApplication.class, args);
   }
 }
