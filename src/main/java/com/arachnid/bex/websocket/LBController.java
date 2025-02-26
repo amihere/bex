@@ -13,6 +13,7 @@ public class LBController {
   @MessageMapping("/get-leaders")
   @SendTo("${bex.websocket.broker}/leaderboard")
   public LBResponse getLeaderBoard(LBRequest message) throws Exception {
+    System.out.println("foundat " + System.currentTimeMillis());
     Thread.sleep(1000); // simulated delay
     return new LBResponse("Hello, " + HtmlUtils.htmlEscape(message.username()) +
                           "!");
