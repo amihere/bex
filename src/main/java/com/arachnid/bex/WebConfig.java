@@ -11,14 +11,13 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker
 public class WebConfig implements WebSocketMessageBrokerConfigurer {
 
-  @Value("${bex.websocket.broker}") private String brokerName;
   @Value("${bex.websocket.endpoint}") private String endpoint;
   @Value("${bex.websocket.destination-prefix}")
   private String destinationPrefix;
 
   @Override
   public void configureMessageBroker(MessageBrokerRegistry config) {
-    config.enableSimpleBroker(brokerName);
+    config.enableSimpleBroker("/topic");
     config.setApplicationDestinationPrefixes(destinationPrefix);
   }
 
