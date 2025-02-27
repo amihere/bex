@@ -13,9 +13,9 @@ public class LBController {
   @MessageMapping("/get-leaders")
   @SendTo("/topic/leaderboard")
   public LBResponse getLeaderBoard(LBRequest message) throws Exception {
-    System.out.println("foundat " + System.currentTimeMillis());
+    System.out.println("Update at " + System.currentTimeMillis());
     Thread.sleep(1000); // simulated delay
-    return new LBResponse("Hello, " + HtmlUtils.htmlEscape(message.username()) +
-                          "!");
+    return new LBResponse("kwesi leads with " + (1 + Math.random() * 100) +
+                          " stocks");
   }
 }

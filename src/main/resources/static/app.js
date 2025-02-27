@@ -5,8 +5,8 @@ const stompClient = new StompJs.Client({
 stompClient.onConnect = (frame) => {
   setConnected(true);
   console.log("Connected: " + frame);
-  stompClient.subscribe("/topic/leaderboard", (greeting) => {
-    showGreeting(JSON.parse(greeting.body).content);
+  stompClient.subscribe("/topic/leaderboard", (leaders) => {
+    showLeaderboard(JSON.parse(leaders.body).html);
   });
 };
 
@@ -27,7 +27,7 @@ function setConnected(connected) {
   } else {
     $("#conversation").hide();
   }
-  $("#greetings").html("");
+  $("#leaderboard").html("");
 }
 
 function connect() {
@@ -47,8 +47,8 @@ function sendName() {
   });
 }
 
-function showGreeting(message) {
-  $("#greetings").append("<tr><td>" + message + "</td></tr>");
+function showLeaderboard(message) {
+  $("#leaders").append("<tr><td>" + message + "</td></tr>");
 }
 
 $(function () {
