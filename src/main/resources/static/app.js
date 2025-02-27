@@ -42,8 +42,8 @@ function disconnect() {
 
 function sendName() {
   stompClient.publish({
-    destination: "/app/get-leaderboard",
-    body: JSON.stringify({ name: $("#name").val() }),
+    destination: "/app/get-leaders",
+    body: JSON.stringify({ username: $("#name").val(), token: "00111000" }),
   });
 }
 
