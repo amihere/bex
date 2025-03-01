@@ -23,9 +23,9 @@ function setConnected(connected) {
   $("#connect").prop("disabled", connected);
   $("#disconnect").prop("disabled", !connected);
   if (connected) {
-    $("#conversation").show();
+    $("#leaderboard-tbl").show();
   } else {
-    $("#conversation").hide();
+    $("#leaderboard-tbl").hide();
   }
   $("#leaderboard").html("");
 }
@@ -43,7 +43,7 @@ function disconnect() {
 function sendName() {
   stompClient.publish({
     destination: "/app/get-leaders",
-    body: JSON.stringify({ username: $("#name").val(), token: "00111000" }),
+    body: JSON.stringify({ username: $("#register").val(), token: "00111000" }),
   });
 }
 
