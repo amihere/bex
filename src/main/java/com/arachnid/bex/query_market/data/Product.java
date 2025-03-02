@@ -15,8 +15,8 @@ public class Product {
   private LocalDateTime created;
 
   public Product() {}
-  public Product(long id, String name) {
-    this.id = id;
+  public Product(String name) {
+    this.id = null;
     this.name = name;
   }
   public Long getId() { return id; }
