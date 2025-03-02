@@ -1,4 +1,4 @@
-package com.arachnid.bex.websocket;
+package com.arachnid.bex.websocket.leaderboard;
 
 import java.util.List;
 import org.springframework.messaging.simp.SimpMessagingTemplate;

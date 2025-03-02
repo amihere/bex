@@ -1,4 +1,4 @@
-package com.arachnid.bex.config;
+package com.arachnid.bex;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

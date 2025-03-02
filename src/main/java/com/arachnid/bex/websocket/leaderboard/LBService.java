@@ -1,4 +1,4 @@
-package com.arachnid.bex.websocket;
+package com.arachnid.bex.websocket.leaderboard;
 
 import java.util.ArrayList;
 import java.util.List;

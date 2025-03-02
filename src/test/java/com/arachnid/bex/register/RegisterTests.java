@@ -4,20 +4,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.arachnid.bex.Config;
 import com.arachnid.bex.config.GeneralException;
 import com.arachnid.bex.registration.RegisterService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 
-@SpringBootTest
-// @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class RegisterTests {
+public class RegisterTests extends Config {
 
   @Autowired private RegisterService service;
 
   @Test
+  @DirtiesContext
   public void testRegister() {
     var response = service.registerUser("lewis");
     assertNotNull(response);
