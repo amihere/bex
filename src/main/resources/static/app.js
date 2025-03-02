@@ -6,7 +6,7 @@ stompClient.onConnect = (frame) => {
   setConnected(true);
   console.log("Connected: " + frame);
   stompClient.subscribe("/topic/leaderboard", (leaders) => {
-    showLeaderboard(JSON.parse(leaders.body).html);
+    showLeaderboard(JSON.parse(leaders.body));
   });
 };
 
@@ -47,8 +47,27 @@ function sendName() {
   });
 }
 
-function showLeaderboard(message) {
-  $("#leaders").append("<tr><td>" + message + "</td></tr>");
+function showLeaderboard(messages) {
+  html = messages
+    .map((item, curr) => {
+      str = "<tr>";
+      str += "<td>" + ++curr + "</td>";
+      str += "<td>" + item.name + "</td>";
+      str += "<td>" + item.stocks[0] + "</td>";
+      str += "<td>" + item.stocks[1] + "</td>";
+      str += "<td>" + item.stocks[2] + "</td>";
+      str += "<td>" + item.stocks[3] + "</td>";
+      str += "<td>" + item.stocks[4] + "</td>";
+      str += "<td>" + item.stocks[5] + "</td>";
+      str += "<td>" + item.stocks[6] + "</td>";
+      str += "<td>" + item.stocks[6] + "</td>";
+      str += "<td style='text-align: right;'>" + item.balance + "</td>";
+      str += "<td style='text-align: right;'>" + item.pnl + "</td>";
+      str += "</tr>";
+      return str;
+    })
+    .join();
+  $("#leaderboard").html(html);
 }
 
 $(function () {
