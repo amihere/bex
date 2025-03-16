@@ -18,7 +18,9 @@ public class Product {
   public Product(String name) {
     this.id = null;
     this.name = name;
+    this.created = LocalDateTime.now();
   }
+
   public Long getId() { return id; }
   public String getName() { return name; }
   public LocalDateTime getCreated() { return created; }

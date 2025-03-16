@@ -18,12 +18,12 @@ public class OrderController {
   }
 
   @GetMapping("order/{id}")
-  public Boolean status(@RequestParam("id") String id) {
+  public OrderStatusResponse status(@RequestParam("id") String id) {
     return orderService.status(id);
   }
 
   @PostMapping("order")
-  public Boolean placeOrder(OrderRequest request) {
+  public String placeOrder(OrderRequest request) {
     LOG.warn("order in " + request.toString());
     return orderService.placeOrder(request);
   }

@@ -5,7 +5,6 @@ import com.arachnid.bex.order.data.Order;
 import com.arachnid.bex.order.data.OrderRepository;
 import com.arachnid.bex.query_market.data.Product;
 import jakarta.transaction.Transactional;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -20,7 +19,7 @@ public class OrderService {
     this.orderRepository = orderRepository;
   }
 
-  public Boolean placeOrder(OrderRequest request) {
+  public String placeOrder(OrderRequest request) {
     validateOrder(request);
     return placeOrderHelper(request);
   }
@@ -31,14 +30,12 @@ public class OrderService {
   }
 
   @Transactional
-  public Boolean placeOrderHelper(OrderRequest request) {
-
-    orderRepository.save(new Order(
+  public String placeOrderHelper(OrderRequest request) {
+    final var order = new Order(
         UUID.randomUUID().toString(), null, new Product(request.product()),
-        request.type(), request.side(), request.quantity(), request.price(),
-        LocalDateTime.now()));
-
-    return true;
+        request.type(), request.side(), request.quantity(), request.price());
+    orderRepository.save(order);
+    return order.getId();
   }
 
   public OrderStatusResponse status(String id) {

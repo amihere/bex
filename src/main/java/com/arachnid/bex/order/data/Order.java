@@ -25,6 +25,17 @@ public class Order {
 
   public Order() {}
 
+  public Order(String id, SecurityUser user, Product product, OrderType type,
+               OrderSide side, Integer quantity, BigDecimal price) {
+    this.id = id;
+    this.user = user;
+    this.product = product;
+    this.type = type;
+    this.side = side;
+    this.quantity = quantity;
+    this.price = price;
+  }
+
   public String getId() { return id; }
 
   public SecurityUser getUser() { return user; }
