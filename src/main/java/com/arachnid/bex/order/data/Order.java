@@ -5,9 +5,9 @@ import com.arachnid.bex.order.OrderSide;
 import com.arachnid.bex.order.OrderType;
 import com.arachnid.bex.query_market.data.Product;
 import com.arachnid.bex.registration.data.SecurityUser;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 public class Order {
 
   @Id private String id;
-  @Column(unique = true) private SecurityUser user;
-  private Product product;
+  @OneToOne(optional = false) private SecurityUser user;
+  @OneToOne(optional = false) private Product product;
   private OrderType type;
   private OrderSide side;
   private Integer quantity;
